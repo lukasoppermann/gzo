@@ -1,0 +1,12 @@
+#logo_lines{
+	width: 100%;
+	height: 100%;
+	background: transparent url('../../media/layout/gzo_lines.png') 5px left repeat-x;	
+}
+#footer{
+	position: absolute;
+	bottom: -50px;
+}
+#centered{
+	margin-bottom: 50px;
+}
