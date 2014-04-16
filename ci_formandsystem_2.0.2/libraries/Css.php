@@ -335,7 +335,7 @@ class CI_Css {
 		// predefine css var
 		$css = NULL;
 		// if compression is activated
-		if($compress === TRUE)
+		if($compress === TRUE && ENVIRONMENT !== 'testing' && ENVIRONMENT !== 'development')
 		{
 			$files = $this->compress($this->data['files'][$group], $group);		
 		}

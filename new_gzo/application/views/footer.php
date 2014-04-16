@@ -4,23 +4,17 @@
 					</div>
 <? } ?>
 				</div>
+			</div>
+			<div id="footer">
+				<?=variable($menu['footer']); ?>
+				<div class="footer_meta">
+				<?=copyright(array('copyright' => 'Copyright &copy', 'by' => 'GZO Oberflächentechnik GmbH - All Rights Reserved.')); ?>
 				</div>
-						</div>
-				<div id="content_bottom">
-			
-				</div>
-		
-					<div id="footer">
-						<?=variable($menu['footer']); ?>
-					<div class="footer_meta">
-						<?=copyright(array('copyright' => 'Copyright &copy', 'by' => 'GZO Oberflächentechnik GmbH - All Rights Reserved.')); ?>
-					</div>
-				</div>
-				</div>
+			</div>
 		</div>
 	</div>
 </div>	
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="<?=base_url()?>libs/js/jquery.cycle.all.js"></script>
 <script type="text/javascript">
 

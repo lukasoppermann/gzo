@@ -21,7 +21,8 @@ class MY_Controller extends CI_Controller {
 		header("Content-type: text/html;charset=".$this->config->item('charset'));
 		// --------------------------------------------------------------------
 		// load assets
-		css_add('screen',array('reset,fonts,screen'));
+		// reset
+		css_add('screen',array('screen'));
 		// js_add('default',array('jquery', 'ui/minified/jquery.ui.core.min', 'ui/minified/jquery.ui.widget.min', 'ui/minified/jquery.ui.mouse.min', 'javascript'));
 		// set language	
 		$languages = $this->config->item('languages');

@@ -8,7 +8,7 @@ echo css('print, screen', TRUE);
 echo title(config('title').' | '.config('page_name'));
 echo "\n";
 ?>
-<link href='http://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
 </head>
 <body<?=variable($body_id).variable($body_class); ?>>
 <div id ="bg_bottom">
@@ -59,12 +59,7 @@ echo "\n";
 					echo '<img src="'.base_url(TRUE).'media/images/'.$header.'" width="950" height="350" alt="r2 gmbh - '.$header.'">';
 				}?>
 			</div>
-				<div id="container">	
-					<div id="content_top">
-					</div>
-					<div id="content">
-						<div id="content_container">
-							<div id="sidebar">
-									<?=variable($menu['main']); ?>
-		 					</div>
-							<div id="main_content">
+			<div id="container">	
+					<div id="content_container">
+						<div id="sidebar"><?=variable($menu['main']); ?></div>
+						<div id="main_content">
