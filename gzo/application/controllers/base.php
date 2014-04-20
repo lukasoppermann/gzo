@@ -20,6 +20,7 @@ class Base extends MY_Controller {
 		$data = $this->data;
 		// get posts
 		$post_data = index_array(get_db_data(config('prefix').config('db_entries'), array('where' => array('type' => '2'), 'select' => '*')), 'language', TRUE);
+		
 		// get teasers
 		$data['teaser'] = '';
 		foreach( $post_data[config('lang_id')] as $id => $tes )
@@ -30,6 +31,9 @@ class Base extends MY_Controller {
 				$data['teaser'] .= $this->load->view('teaser', $tes, TRUE);
 			}
 		}
+
+		print_r($this->navigation->current('path'));
+
 		// get current lang posts by channel
 		$posts = index_array($post_data[config('lang_id')], 'channel', TRUE);
 		// if blog is selected

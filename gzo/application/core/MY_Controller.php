@@ -23,7 +23,6 @@ class MY_Controller extends CI_Controller {
 		// load assets
 		// reset
 		css_add('screen',array('screen'));
-		// js_add('default',array('jquery', 'ui/minified/jquery.ui.core.min', 'ui/minified/jquery.ui.widget.min', 'ui/minified/jquery.ui.mouse.min', 'javascript'));
 		// set language	
 		$languages = $this->config->item('languages');
 		$lang_id = $this->config->item('lang_id');

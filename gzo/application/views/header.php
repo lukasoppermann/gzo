@@ -4,7 +4,7 @@
 <?	
 echo favicon('media/layout/favicon.ico','media/layout/favicon.png');
 echo meta(array('keywords'=>config('tags'), 'description'=>config('description')));
-echo css('print, screen', TRUE);
+echo css('screen', TRUE);
 echo title(config('title').' | '.config('page_name'));
 echo "\n";
 ?>
@@ -47,12 +47,12 @@ echo "\n";
 			
 					shuffle($array);
 
-					echo '<div class="slideshow">';
+					echo '<div id="simpleslider"><div class="slideshow" id="ss__wrapper">';
 						foreach($array as $id => $item)
 						{
 							echo '<img src="'.base_url(TRUE).'media/images/'.$header.$item.'" width="950" height="350" alt="r2 gmbh - '.$item.'">';
 						}
-					echo "</div>";
+					echo "</div></div>";
 				}
 				else
 				{
