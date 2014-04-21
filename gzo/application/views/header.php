@@ -15,12 +15,9 @@ echo "\n";
 	<div id="logo_lines">
 		<div id="centered">
 			<?=logo(array('alt' => 'GZO Oberflächentechnik GmbH - return to homepage', 'url' => 'home', 'file' => 'media/layout/gzo_logo.png'))."\n"; ?>
-			<div id="top_menu">
-				<?=variable($menu['lang']); ?>
-				<?=!empty($meta_menu) ? $meta_menu : ''; ?>
-			</div>
+			<?=variable($menu['lang']); ?>
 			<div id="header">
-				<div class="overlay"></div>
+				<div class="slideshow" id="ss__wrapper">
 				<?
 				// default slideshow
 				if($header == null)
@@ -47,17 +44,16 @@ echo "\n";
 			
 					shuffle($array);
 
-					echo '<div id="simpleslider"><div class="slideshow" id="ss__wrapper">';
-						foreach($array as $id => $item)
-						{
-							echo '<img src="'.base_url(TRUE).'media/images/'.$header.$item.'" width="950" height="350" alt="r2 gmbh - '.$item.'">';
-						}
-					echo "</div></div>";
+					foreach($array as $id => $item)
+					{
+						echo '<img src="'.base_url(TRUE).'media/images/'.$header.$item.'" width="950" height="350" alt="r2 gmbh - '.$item.'">';
+					}
 				}
 				else
 				{
 					echo '<img src="'.base_url(TRUE).'media/images/'.$header.'" width="950" height="350" alt="r2 gmbh - '.$header.'">';
 				}?>
+				</div>
 			</div>
 			<div id="container">	
 					<div id="content_container">

@@ -8,7 +8,7 @@
 			<div id="footer">
 				<?=variable($menu['footer']); ?>
 				<div class="footer_meta">
-				<?=copyright(array('copyright' => 'Copyright &copy', 'by' => 'GZO Oberflächentechnik GmbH - All Rights Reserved.')); ?>
+					<?=copyright(array('copyright' => 'Copyright &copy', 'by' => 'GZO Oberflächentechnik GmbH - All Rights Reserved.')); ?>
 				</div>
 			</div>
 		</div>

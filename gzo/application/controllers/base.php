@@ -20,6 +20,40 @@ class Base extends MY_Controller {
 		$data = $this->data;
 		// get posts
 		$post_data = index_array(get_db_data(config('prefix').config('db_entries'), array('where' => array('type' => '2'), 'select' => '*')), 'language', TRUE);
+		// get current lang posts by channel
+		$posts = index_array($post_data[config('lang_id')], 'channel', TRUE);	
+
+		
+		// if news is selected
+		if( $this->navigation->current('path') === '/kontakt/jobs' )
+		{
+			$data['page'] = "";
+			if(isset($posts[1]))
+			{
+				$posts = index_array($posts[1], 'date');
+				ksort($posts);
+				foreach($posts as $key => $post)
+				{
+					$content[] = $this->load->view('custom/entry', $post, true);
+				}
+				$data['page'] = '<div class="with-teaser">'.implode($content, '').'</div>';
+			}
+			$data['page'] .= $this->load->view('custom/job-teaser', '', TRUE);
+			$this->config->set_item('title', 'Jobs');
+			// get header image
+			$data['header'] = "kontakt.jpg";
+			$news = 'true';
+		}
+		elseif( $this->navigation->current('path') === '/kontakt' )
+		{
+			$data['page'] = $this->load->view('custom/kontakt', '', TRUE);
+			$this->config->set_item('title', 'Kontakt');
+		}
+		elseif( $this->navigation->current('path') === '/contact' )
+		{
+			$data['page'] = $this->load->view('custom/kontakt_en', '', TRUE);
+			$this->config->set_item('title', 'Contact');
+		}
 		
 		// get teasers
 		$data['teaser'] = '';
@@ -32,101 +66,8 @@ class Base extends MY_Controller {
 			}
 		}
 
-		print_r($this->navigation->current('path'));
-
-		// get current lang posts by channel
-		$posts = index_array($post_data[config('lang_id')], 'channel', TRUE);
-		// if blog is selected
-		if( ($this->navigation->current('id') == 29 || $this->navigation->current('id') == 9) )
-		{
-			$variable = $this->navigation->active('variables');
-			if( isset($variable) && $variable != null )
-			{
-				// get post
-				$post = index_array($posts[2], 'permalink');
-				$post = $post[$variable];
-				// set content
-				$back = '<a class="back-link" href="'.lang_url(false).$this->navigation->current('path').'">'.lang('back_blog').'</a>';
-				$data['page'] = $back.'<h1>'.$post['title'].'</h1><div class="blog_text">'.$post['text'].'<span class="author">Dirk Gather</span></div>
-					<div class="blog_img"><img alt="'.$post['image'].'" src="'.base_url(TRUE).'media/images/'.$post['image'].'"></div>';
-				// set title
-				$this->config->set_item('title', $post['title']);
-			}
-			else
-			{			
-				if(isset($posts[2]))
-				{
-					foreach($posts[2] as $key => $post)
-					{
-						if( empty($post['excerpt']) )
-						{
-							$post['excerpt'] = trim_text($post['text'], 300, array('end' => '...'));
-						}
-						$content[] = $this->load->view('custom/blog_preview', $post, true);
-						unset($post);
-					}
-					$data['page'] = implode($content, '');
-				}
-				else
-				{
-					$data['page'] = "";
-				}
-				$this->config->set_item('title', 'Good Vibrations');
-			}
-			$news = 'true';
-			// get header image
-			$data['header'] = null;
-		}
-		// if news is selected
-		if( ($this->navigation->current('id') == 16 || $this->navigation->current('id') == 24) )
-		{
-			$data['header'] = null;
-			$variable = $this->navigation->active('variables');
-			if( isset($variable) && $variable != null )
-			{
-				// get post
-				$post = index_array($posts[1], 'permalink');
-				$post = $post[$variable];
-				// set header
-				if( isset($post['header']) && $post['header'] != null )
-				{
-					$data['header'] = $post['header'];
-				}
-				// set content
-				$back = '<a class="back-link" href="'.lang_url(false).$this->navigation->current('path').'">'.lang('back_news').'</a>';
-				$data['page'] = $back.'<h1>'.$post['title'].'</h1>'.$post['text'];
-				// set title
-				$this->config->set_item('title', $post['title']);
-			}
-			else
-			{
-				if(isset($posts[1]))
-				{
-					$posts = index_array($posts[1], 'date');
-					ksort($posts);
-					foreach($posts as $key => $post)
-					{
-						if( empty($post['excerpt']) )
-						{
-							$post['excerpt'] = trim_text($post['text'], 300, array('end' => '...', 'strip_tags' => 'false'));
-						}
-						$content[] = $this->load->view('custom/blog_preview', $post, true);
-						unset($post);
-					}
-					$data['page'] = implode($content, '');
-				}
-				else
-				{
-					$data['page'] = "";
-				}
-				$this->config->set_item('title', 'News');
-			}
-			// get header image
-			$news = 'true';
-			$data['teaser'] = null;
-		}
 		//
-		if(!isset($news) || $news == 'false' )
+		if( (!isset($news) || $news == 'false') && $this->navigation->current('path') != '/kontakt' )
 		{
 			if( ($this->navigation->current('id') != 12 && $this->navigation->current('id') != 15) )
 			{
@@ -153,17 +94,8 @@ class Base extends MY_Controller {
 					$teasers[] = $this->load->view('custom/teaser', $tease, true);
 				}
 			}
-			else
-			{
-				$data['teaser'] = null;
-			}
 			//
 			$data['page'] = '<div class="entry">'.$this->entries->get($this->navigation->current('id'), $this->data, TRUE).'</div>'.implode($teasers, '');
-			// set tags
-			if($tags = $this->entries->get_element('tags', $this->navigation->current('id')))
-			{
-			 	$this->config->set_item('tags', $tags);		
-			}
 			// set description
 			if($desc = $this->entries->get_element('description', $this->navigation->current('id')))
 			{

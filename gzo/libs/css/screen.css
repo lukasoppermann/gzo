@@ -1,35 +1,17 @@
-/* CSS RESET */
-html, body, div, span, textarea, input,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, cite, code,
-img, q, small, strike, strong, sub, sup, ol, ul, li, fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100,01%;
-	font-weight: normal;
-	vertical-align: baseline;
-	background: transparent;
-}
 /* general link setup*/
 a{ text-decoration: none; border: 0px;  color: inherit;}
 a:visited, a:hover{ text-decoration: none; color: inherit;}
 body { line-height: 1; font-size: 1em/1.5; background-color: #fff; color: #000;}
-ul{ list-style: none;}
+ul{ list-style: none; }
 /* remember to define focus styles! */
 :focus { outline: 0; outline: none; }
-/* tables still need 'cellspacing="0"' in the markup */
-table { border-collapse: collapse; border-spacing: 0; }
-
 html{
 	height: 100%;
 	min-height: 100%;
 	width: 100%;	
+	margin: 0;
 }
 body{
-/*	background: #fff url('../../media/layout/radial_top.png') top left no-repeat;*/
 	background-color: rgb(255,255,255);
 	background-image: radial-gradient( top, rgb(255,255,255) 0%, rgb(255,255,255) 35%, rgb(250,250,250) 35%, rgb(250,250,250) 40%, rgb(245,245,245) 40%, rgb(245,245,245) 60%, rgb(255,255,255) 60%);
 	background-image: -webkit-radial-gradient( top, rgb(255,255,255) 0%, rgb(255,255,255) 35%, rgb(250,250,250) 35%, rgb(250,250,250) 40%, rgb(245,245,245) 40%, rgb(245,245,245) 60%, rgb(255,255,255) 60%);
@@ -42,6 +24,7 @@ body{
 	height: 100%;
 	min-height: 100%;
 	width: 100%;
+	margin: 0;
 	text-align: center;
 	line-height: 140%;
 	letter-spacing: 0.015em;
@@ -64,33 +47,30 @@ body{
 /* ------------------------------------------------------------------------ */
 a:hover, .active > a{
 	color: #FF7E00;
+	text-decoration: none;
 }
 a{
 	color: #4d4d4d;
-}
-a.link{
 	text-decoration: underline;
 }
-.referral a.link{
-	text-decoration: none;
-}
 a.back-link{
-	font-size: 10px;
+	font-size: .8em;
 	display: block;
-	margin-bottom: 15px;
+	position: relative;
+	margin-left: 10px;
 	color: rgb(150,150,150);
 }
 a.back-link:before{
 	content: "";
 	display: block;
 	position: absolute;
-	left: 5px;
-	top: -2px;
-	height: 16px;
-	width: 16px;	
-	background-color: transparent;
-	background-image: url('../../media/layout/gzo_icons.png');
-	background-position: -64px 0px;
+	height: 0px;
+	width: 0px;
+	left: -14px;
+	top: 50%;
+	margin-top: -4px;
+	border: 4px solid transparent;
+	border-right-color: rgb(150,150,150);
 	z-index: 3;
 }
 a.back-link:hover{
@@ -103,7 +83,6 @@ a.back-link:hover:before{
 #bg_bottom{
 	position: relative;
 	float: left;
-/*	background:transparent url('../../media/layout/radial_bottom.png') bottom left no-repeat;*/
 	width: 100%;
 	min-height: 100%;
 }
@@ -117,6 +96,7 @@ a.back-link:hover:before{
 }
 /* ------------------------------------------------------------------------ */
 #header{
+	background: rgb(255,255,255);
 	box-shadow: 0 2px 5px rgba(0,0,0,0.25);
 	margin: 30px 0px 20px 0;
 	width: 950px;
@@ -125,36 +105,11 @@ a.back-link:hover:before{
 #header div.img{
 	width: 950px;
 	height: 350px;
-	overflow: hidden;
 }
 #header .slideshow{
 	width: 950px;
 	height: 350px;
 	overflow: hidden;
-}
-/* ------------------------------------------------------------------------ */
-#top_menu{
-	position: relative;
-	float: right;
-	margin-top: -90px;
-	font-size: 0.9em;
-	padding: 10px 10px 10px 0px;
-	height: 20px;
-	width: 400px;
-}
-#top_menu{
-	text-align: right;
-}
-#top_menu li{
-	float: right;
-	padding: 0px 5px;	
-}
-#lang_menu{
-	list-style: none;
-}
-#lang_menu a{
-	display: block;
-	padding: 5px 0 5px 10px;
 }
 /* ------------------------------------------------------------------------ */
 #logo{
@@ -179,31 +134,7 @@ a.back-link:hover:before{
 	width: 100%;
 	padding: 10px;
 }
-
-/* ------------------------------------------------------------------------ */
-#footer{
-	float: left;
-	padding: 20px 0px 20px 0px;
-	width: 100%;
-}
-#footer ul li{
-	position: relative;
-	float: left;
-	padding: 0px 10px;
-}
-#footer div.footer_meta{
-	float: right;
-	padding: 0px 10px;
-}
-#footer_menu li.active a{
-	font-weight: bold;
-}
-/* ------------------------------------------------------------------------ */
-.float-right{ float: right; }
-.seperator{ padding: 0px 4px; }
-/* ------------------------------------------------------------------------ */
 #content_container{
-	height: 100%;
 	position: relative;
 	float: left;
 	background-color: rgb(255,255,255);
@@ -233,33 +164,56 @@ a.back-link:hover:before{
 	top: 0;
 }
 /* ------------------------------------------------------------------------ */
+.menu{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	float: left;
+}
+.menu li{
+	float: left;
+}
+.menu a{
+	text-decoration: none;
+	display: block;
+	position: relative;
+	padding: 10px;
+}
 #nav {
 	padding: 10px 0 80px 10px;
 }
-#nav a, #nav li{
-	display: block;
-	position: relative;
-}
-#nav li.active a{
-
-}
-#nav li a{
-	display: block;
-	padding: 10px 0px 10px 10px;
-}
-#nav > li.active{
-	padding: 0px 0px 4px 0px;
-}
-#nav > li.active > a{
-	padding: 12px 0px 12px 10px;
+#nav li{
+	width: 100%;
 }
 #nav li ul{
+	float: left;
 	padding: 0px 0px 0px 20px;	
 }
 #nav li ul li a{
 	padding: 0px 0px 12px 10px;	
 }
-#nav li ul li.active a:before{
+#nav li ul{ display: none; }
+#nav li.active ul{ display: block; }
+#lang_menu{
+	position: absolute;
+	top: -5px;
+	right: 0;
+	font-size: 0.9em;
+}
+#lang_menu li{
+	float: left;
+}
+#footer{
+	float: left;
+	width: 100%;
+	margin: 10px 0;
+}
+.footer_meta{
+	float: right;
+	padding: 10px;
+}
+#nav li ul li.active a:before, #main_content ul li:before{
 	content: "";
 	position: absolute;
 	display: block;
@@ -268,17 +222,19 @@ a.back-link:hover:before{
 	margin-top: -10px;
 	width: 0px;
 	height: 0px;
-	border-style: solid;
-	border-color: transparent transparent transparent rgb(95,95,95);
-	border-width: 4px;
+	border: 4px solid transparent;
+	border-left-color: rgb(95,95,95);
 }
-/* ------------------------------------------------------------------------ */
-#nav li ul{ display: none; }
-#nav li.active ul{ display: block; }
+#main_content ul li:before{
+	border-left-color: rgb(255,125,0);
+	left: -10px;
+	top: 50%;
+	margin-top: -7px;
+}
 /* ------------------------------------------------------------------------ */
 #main_content{
 	position: relative;
-	padding: 20px 25px 0 25px;
+	padding: 20px 25px;
 	float: left;
 	width: 700px;
 	margin-bottom: 30px;
@@ -299,48 +255,36 @@ a.back-link:hover:before{
 #main_content h2{
 	font-size: 1.6em;
 	font-weight: 300;
+	margin: 35px 0 10px 0px;
+}
+#main_content h3{
+	font-size: 1.3em;
+	font-weight: 300;
 	margin: 0 0 15px 0px;
 }
-#main_content h3, #main_content h4{
-	font-size: 1.3em;
+#main_content p + h3{
+	margin-top: 35px;
+}
+#main_content h4{
+	font-size: 1em;
 	margin: 0 0 10px 0px;
 }
-#main_content p + h3, #main_content p + h2{
-	margin-top: 20px;
-}
-#main_content ul{
-	list-style: none;
+#main_content ol, #main_content ul{
 	display: block;
-	margin: 0px 0px 10px 15px;
+	padding-left: 0;
+	margin: 0px 0px 10px 10px;
 }
-#main_content ul li{
-	padding: 5px;
+#main_content ol{
+	margin-left: 20px;
+	padding-right: 75px;
+}
+#main_content ol li, #main_content ul li{
 	position: relative;
-}
-#main_content ul li:before{
-	content: "";
-	position: absolute;
-	display: block;
-	left: -15px;
-	top: 4px;
-	width: 16px;
-	height: 16px;
-	background: url('../../media/layout/gzo_icons.png') -16px 0px no-repeat;
-}
-#main_content div.box{
-	float: left;
-	clear: both;	
+	padding: 5px 0 10px 0;
 }
 #main_content p{
 	position: relative;
 	margin-bottom: 10px;
-}
-#main_content ol{
-	margin: 20px 0px 10px 15px;
-	width: 485px;	
-}
-#main_content ol li{
-	padding-bottom: 10px;
 }
 #main_content p.referral{
 	margin-top: 15px;
@@ -380,27 +324,6 @@ a.back-link:hover:before{
 }
 #main_content table td.column-1-fill{
 	background: #f1f1f1;
-}
-#main_content #kontakt {
-	
-	width: 700px;
-	margin-top: 20px;
-}
-#main_content #kontakt td.column-1{
-	border-top: 1px solid #d6d6d6;
-	background: #fff;
-}
-#main_content #kontakt td.column-1-fill{
-	background: #fff;
-}
-#main_content #kontakt td{
-	vertical-align: top;
-	padding-left: 30px;
-	padding-bottom: 25px;
-}
-#main_content #kontakt td.column-1, #main_content #kontakt td.column-last{
-	width: 35%;
-	padding-left: 7px;
 }
 #main_content .blog_teaser{
 	position: relative;
@@ -523,9 +446,10 @@ a.back-link:hover:before{
 #media_box .download-file{
 	margin-bottom: 12px;
 }
+
 /* ------------------------------------------------------------------------ */
 /* teaser_bar */
-#teaser_bar{
+/*#teaser_bar{
 	float: left;
 	min-height: 100px;
 	width: 215px;
@@ -535,16 +459,13 @@ a.back-link:hover:before{
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;	
 	border-left: 1px solid #d6d6d6;
-}
+}*/
 .teaser{
 	float: left;
 	width: 190px;
 	margin-bottom: 20px;
 	padding-bottom: 15px;
 	border-bottom: 1px solid #d6d6d6;
-}
-#teaser_bar .teaser p{
-	width: auto;
 }
 .teaser .teaser-image{
 	margin-bottom: 10px;
@@ -556,19 +477,90 @@ a.back-link:hover:before{
 	max-width: 100%;
 	height: auto;
 }
-/*
-  SimpleSlider v0.9 by JaL Productions
-  http://jalproductions.co.uk/
-  https://github.com/jamesl1001/simpleslider
-*/
 
-#simpleslider {
-    width: 100%;
-    height: 0;
-    margin-bottom: 25px;
-    position: relative;
+/* ------------------------------------------------------------------------ */
+/* entry */
+.entry-list{
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+	border-bottom: 1px solid rgb(235,235,235);
+}
+.entry-list:last-child{
+	border-bottom: none;
+}
+.entry-list:first-child{
+	margin-top: 10px;
+}
+.with-teaser{
+	float: left;
+	position: relative;
+	margin-right: 15px;
+}
+.with-teaser:before{
+	content: "";
+	display: block;
+	height: 100%;
+	width: 1px;
+	background-color: rgb(235,235,235);
+	background-image: linear-gradient( top, rgb(235,235,235), rgb(255,255,255));
+	background-image: -webkit-linear-gradient( top, rgb(235,235,235), rgb(255,255,255));
+	position: absolute;
+	right: 0;
+	top: -20px;
+}
+.with-teaser .entry-list{
+	width: 425px;
+	margin-right: 10px;
+}
+.teaser{
+	float: left;
+	width: 200px;
+	margin-bottom: 20px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #d6d6d6;
+}
+.teaser:last-child{
+	border: none;
 }
 
+#teaser_bar{
+	float: left;
+	width: 100%;
+	border: 1px solid rgb(245,245,245);
+	background-color: rgb(250,250,250);
+	border-radius: 5px;
+	padding: 10px 10px 30px 10px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#teaser_bar a{
+	float: left;
+	width: 30%;
+	padding: 0 1.5%;
+}
+#teaser_bar a.link{
+	float: none;
+	width: auto;
+	padding: 0;	
+}
+
+#main_content .job-title{
+	float: left;
+	width: 100%;
+	margin: 40px 0 10px 0;
+}
+#main_content .name, #main_content .contact{
+	float: left;
+}
+#main_content .name{
+	width: 25%;
+}
+/* ------------------------------------------------------------------------ */
+/*
+  SimpleSlider v0.9 by JaL Productions
+  https://github.com/jamesl1001/simpleslider
+*/
 #ss__wrapper {
     width: 100%;
     height: 0;
@@ -583,8 +575,8 @@ a.back-link:hover:before{
     left: 0;
     filter: alpha(opacity=0);
     opacity: 0;
-    -webkit-transition: opacity 1s;
-    transition: opacity 1s;
+    -webkit-transition: opacity 1.5s;
+    transition: opacity 1.5s;
 }
 
 #ss__wrapper img.current {
@@ -592,11 +584,9 @@ a.back-link:hover:before{
     opacity: 1;
     z-index: 1;
 }
-
 .full-width {
     width: 100%;
 }
-
 .full-height {
     height: 100%;
 }
