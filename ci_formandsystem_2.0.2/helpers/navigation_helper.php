@@ -62,9 +62,19 @@ function navigation_item(&$item, $opt = array(NULL))
 		$title 	= !isset($title) ? " title='".$item['label']."'" : '';
 		return "<li".$class.$id."><a href=\"".$path."\"".$title.$target."></a>";		
 	}
-	// -----------------
-	// return item
-	return "<li".$class.$id."><a href=\"".$path."\"".$title.$target.$target.">".$item['label'].variable($shortcut)."</a>";
+	
+	if( $item['type'] == 5 )
+	{
+		$class = ' class="'.$tmp_class.' active container-link"';
+		return "<li".$class.$id."><span>".$item['label']."</span></a>";
+	}
+	else
+	{
+		// -----------------
+		// return item
+		return "<li".$class.$id."><a href=\"".$path."\"".$title.$target.$target.">".$item['label'].variable($shortcut)."</a>";		
+	}
+
 }
 // --------------------------------------------------------------------
 /**

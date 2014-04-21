@@ -15,15 +15,6 @@ function item_edit(&$item, $params = null)
 
 	$class = !empty($params['tmp_item_class']) ? " class='".trim($params['tmp_item_class'])."'" : "";
 	// -----------------
-	// move
-	$move = '<span class="icon move float-left" title="'.$move_item.'"></span>'."\n\t";
-	// -----------------
-	// edit
-	$edit = '<span class="icon edit float-right" title="'.$edit_item.'"></span>'."\n\t";
-	// -----------------
-	// delete
-	$delete = '<span class="icon delete float-right" title="'.$delete_item.'"></span>'."\n\t";
-	// -----------------
 	//
 	return 	"<".$params['item'].$class.">
 				<div class='item-wrap'>
