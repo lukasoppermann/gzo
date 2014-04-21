@@ -15,17 +15,66 @@ class MY_Controller extends CI_Controller {
 	function __construct() 
  	{
 		parent::__construct();
-		// get config data
-		$this->config->config_from_db();
 		// set charset
-		header("Content-type: text/html;charset=".$this->config->item('charset'));
+		header("Content-type: text/html;charset=utf-8");
 		// --------------------------------------------------------------------
 		// load assets
 		// reset
 		css_add('screen',array('screen'));
 		// set language	
-		$languages = $this->config->item('languages');
+		$languages = Array(
+	    'abbr' => Array(
+				1 => 'en',
+				2 => 'de'
+			),
+			'id' => Array(
+				'en' => 1,
+				'de' => 2
+			),
+			'array' => array(
+				1 => Array
+				(
+					'id' => 1,
+					'abbr' => en,
+					'status' => 1,
+					'name' => 'english',
+					'label' => 'english'
+				),
+				2 => Array
+				(
+					'id' => 2,
+					'abbr' => 'de',
+					'status' => 1,
+					'name' => 'deutsch',
+					'label' => 'deutsch',
+					'default' => TRUE
+				)
+			)	
+		);
+		$this->config->set_item('languages', $languages);
+		// define current language
+		$segment = $this->config->item('url_lang');
+		if(isset($segment))
+		{
+			$cur = $this->uri->segment($this->config->item('url_lang'));
+		}
+		else
+		{
+			$cur = $this->uri->segment(1);			
+		}
+		if(isset($cur) && isset($languages['id'][$cur]))
+		{
+			$this->config->set_item('lang_abbr', $cur);
+			$this->config->set_item('lang_id', $languages['id'][$cur]);
+		}
+		else
+		{
+			$this->config->set_item('lang_abbr', $default_abbr);
+			$this->config->set_item('lang_id', $default_id);
+		}
 		$lang_id = $this->config->item('lang_id');
+		
+		$this->load->library('Navigation');
 		// --------------------------------------------------------------------
 		// Initialize Menus
 		// Main
@@ -38,7 +87,7 @@ class MY_Controller extends CI_Controller {
 		foreach($languages['array'] as $language)
 		{
 			$lang_list .= "<li class='".($language['id'] == $lang_id ? 'active ' : '').$language['abbr']."'>
-				<a class='lang' href='".base_url(TRUE).$language['abbr'].'/home'."'>".$language['self_name']."</a>
+				<a class='lang' href='".base_url(TRUE).$language['abbr'].'/home'."'>".$language['label']."</a>
 			</li>";
 		}
 		$this->data['menu']['lang'] = "<ul id='lang_menu' class='menu'>".$lang_list."</ul>";

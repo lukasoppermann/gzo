@@ -15,19 +15,18 @@ class Base extends MY_Controller {
 		$language = $this->config->item('languages');
 		$language = index_array($language['array'],'abbr');
 		$this->lang->load('text', $language[config('lang_abbr')]['name']);
-		// get menus, etc. to $data
-		unset($data);
 		$data = $this->data;
 		// get posts
 		$post_data = index_array(get_db_data(config('prefix').config('db_entries'), array('where' => array('type' => '2'), 'select' => '*')), 'language', TRUE);
 		// get current lang posts by channel
 		$posts = index_array($post_data[config('lang_id')], 'channel', TRUE);	
-
+		// reset variables
+		$data['header'] = null;
+		$data['page'] = "";
 		
-		// if news is selected
+		// special cases
 		if( $this->navigation->current('path') === '/kontakt/jobs' )
 		{
-			$data['page'] = "";
 			if(isset($posts[1]))
 			{
 				$posts = index_array($posts[1], 'date');
@@ -47,79 +46,33 @@ class Base extends MY_Controller {
 		elseif( $this->navigation->current('path') === '/kontakt' )
 		{
 			$data['page'] = $this->load->view('custom/kontakt', '', TRUE);
+			$data['header'] = "kontakt.jpg";
 			$this->config->set_item('title', 'Kontakt');
 		}
 		elseif( $this->navigation->current('path') === '/contact' )
 		{
 			$data['page'] = $this->load->view('custom/kontakt_en', '', TRUE);
+			$data['header'] = "kontakt.jpg";
 			$this->config->set_item('title', 'Contact');
 		}
-		
-		// get teasers
-		$data['teaser'] = '';
-		foreach( $post_data[config('lang_id')] as $id => $tes )
-		{
-			// check for teaser
-			if( isset($tes['teaser']) && $tes['teaser'] != NULL )
-			{
-				$data['teaser'] .= $this->load->view('teaser', $tes, TRUE);
-			}
-		}
 
-		//
-		if( (!isset($news) || $news == 'false') && $this->navigation->current('path') != '/kontakt' )
+		// default case
+		if(!isset($data['page']) || $data['page'] == null)
 		{
-			if( ($this->navigation->current('id') != 12 && $this->navigation->current('id') != 15) )
-			{
-				// get news teaser
-				$teaser = index_array($post_data[config('lang_id')], 'teaser', TRUE);
-				$teaser = $teaser['true'];
-				// sort tesaer
-				$subkey = 'date';
-				foreach($teaser as $key => $value)
-				{
-					$arr[$key] = strtolower($value[$subkey]);
-				}
-				arsort($arr);
-				foreach($arr as $k => $v) 
-				{
-					$sorted_array[$k] = $teaser[$k];
-				}
-
-				$teaser = $sorted_array;
-						
-				foreach($teaser as $tease)
-				{
-				 	$tease['text'] = trim_text($tease['text'], 200);
-					$teasers[] = $this->load->view('custom/teaser', $tease, true);
-				}
-			}
-			//
-			$data['page'] = '<div class="entry">'.$this->entries->get($this->navigation->current('id'), $this->data, TRUE).'</div>'.implode($teasers, '');
+			$data['page'] = '<div class="entry">'.$this->entries->get($this->navigation->current('id'), $this->data, TRUE).'</div>';
 			// set description
 			if($desc = $this->entries->get_element('description', $this->navigation->current('id')))
 			{
 			 	$this->config->set_item('description', $desc);		
 			}
-			// get header image
+			$this->config->set_item('title', $this->entries->get_element('title', $this->navigation->current('id')));
+			
 			if($header = $this->entries->get_element('header', $this->navigation->current('id')))
 			{
 			 	$data['header'] = $header;
 			}
-			else
-			{
-				$data['header'] = null;
-			}
-			// set title 
-			$this->config->set_item('title', $this->entries->get_element('title', $this->navigation->current('id')));
-			// <div id="media_box">
-			// get media
-			$media = $this->entries->get_element('media', $this->navigation->current('id'));
-			if( $media != NULL )
-			{
-				$data['teaser'] = $media.$data['teaser'];
-			}
 		}
+		
 		// load view
 		view('', $data);
 	}

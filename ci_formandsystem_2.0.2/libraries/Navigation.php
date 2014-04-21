@@ -25,7 +25,7 @@ class CI_Navigation {
 		$this->initialize($params);
 		// retrieve from database
 		$menu_items = get_db_data($this->params['db_table'], 
-									$db = array('select' => 'id, label, path, menu, type, parent_id, status, position, language, data', 'order' => 'position asc'));
+		$db = array('select' => 'id, label, path, menu, type, parent_id, status, position, language, data', 'order' => 'position asc'));
 		// loop through items
 		foreach($menu_items as $array)
 		{
@@ -401,7 +401,7 @@ class CI_Navigation {
 					$path .= '/'.$item;
 					// check if item is menu item				
 					if( in_array($path, $this->data['path_by_id']))
-					{
+					{	
 						$id = $this->data['id_by_lang_path'][$this->CI->config->item('lang_id')][$path];
 						// array
 						$this->active['items'][]	=& $this->data['by_id'][$id];	

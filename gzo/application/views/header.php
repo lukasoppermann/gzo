@@ -3,9 +3,9 @@
 <head>
 <?	
 echo favicon('media/layout/favicon.ico','media/layout/favicon.png');
-echo meta(array('keywords'=>config('tags'), 'description'=>config('description')));
+echo meta(array('description'=>config('description')));
 echo css('screen', TRUE);
-echo title(config('title').' | '.config('page_name'));
+echo title(config('title').' | GZO Oberflächentechnik GmbH');
 echo "\n";
 ?>
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>

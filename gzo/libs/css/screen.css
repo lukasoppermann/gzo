@@ -163,7 +163,7 @@ a.back-link:hover:before{
 	right: 0;
 	top: 0;
 }
-/* ------------------------------------------------------------------------ */
+/* ------------------------------------------------------------- */
 .menu{
 	margin: 0;
 	padding: 0;
@@ -216,7 +216,7 @@ a.back-link:hover:before{
 	font-size: 0.9em;
 }
 #lang_menu li{
-	float: left;
+	float: right;
 }
 #footer{
 	float: left;
@@ -339,77 +339,6 @@ a.back-link:hover:before{
 #main_content table td.column-1-fill{
 	background: #f1f1f1;
 }
-#main_content .blog_teaser{
-	position: relative;
-	float: left;
-	width: 500px;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-	border-bottom: 1px solid #d6d6d6;
-}
-#main_content .blog_text{
-	position: relative;
-	float: left;
-	width: 500px;
-}
-#main_content .blog_text .excerpt{
-	float: left;
-}
-#main_content .blog_text .referral{
-	float: right;
-	margin: 20px 0px 10px 0px;
-}
-#main_content .blog_img{
-	position: relative;
-	float: left;
-	margin-left: 30px;
-	padding: 0px;
-	width: 160px;
-}
-#main_content .blog_img img{
-	border: 1px solid #d6d6d6;
-	box-shadow: 0px 0px 7px #d6d6d6;
-	-webkit-box-shadow: 0px 0px 7px #d6d6d6;
-	-moz-box-shadow: 0px 0px 7px #d6d6d6;
-}
-#main_content .blog_text .author{
-	float: right;
-	font-style: italic;
-	color: #999;
-}
-#main_content div.news, #media_box{
-	position: relative;
-	float: right;
-	width: 160px;
-	padding: 2px 0px 5px 10px;
-	margin: 0px 30px 20px 0px;
-	border-left: 1px solid #d6d6d6;
-}
-#main_content div.news p{
-	width: 160px;
-	position: relative;	
-	float: left;
-}
-#main_content div.news h4{
-	margin: 0px 0px 10px 0px;
-	color: #FF7E00;
-	width: 160px;
-	font-weight: bold;
-}
-#main_content div.news h3{
-	margin: 0px 0px 10px 0px;
-	width: 160px;
-	font-weight: bold;	
-}
-#main_content div.news .referral{
-	margin: 20px 0px 10px 0px;
-	float: right;
-	display: block;
-}
-#main_content div.news-item{
-	width: 500px;
-	margin-bottom: 30px;
-}
 #main_content ul.list{
 	list-style: disc;
 	margin: 20px 0px 10px 15px;	
@@ -441,57 +370,6 @@ a.back-link:hover:before{
 #main_content fieldset div, #main_content fieldset p{
 	padding: 5px;
 }
-/* ------------------------------------------------------------------------ */
-/* Media Box*/
-#media_box h3{
-	font-size: 15px;
-}
-#media_box a span{
-    text-decoration: underline;
-}
-#media_box a h4{
-    text-decoration: none;	
-}
-#media_box h4{
-	font-weight: bold;
-	margin-bottom: 0px;
-	color: rgb(100,100,100);
-}
-#media_box .download-file{
-	margin-bottom: 12px;
-}
-
-/* ------------------------------------------------------------------------ */
-/* teaser_bar */
-/*#teaser_bar{
-	float: left;
-	min-height: 100px;
-	width: 215px;
-	padding: 10px 10px 30px 10px;
-	margin-left: 5px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;	
-	border-left: 1px solid #d6d6d6;
-}*/
-.teaser{
-	float: left;
-	width: 190px;
-	margin-bottom: 20px;
-	padding-bottom: 15px;
-	border-bottom: 1px solid #d6d6d6;
-}
-.teaser .teaser-image{
-	margin-bottom: 10px;
-	margin-left: -5px;
-	width: 200px;
-	overflow: hidden;
-}
-.teaser .teaser-image img{
-	max-width: 100%;
-	height: auto;
-}
-
 /* ------------------------------------------------------------------------ */
 /* entry */
 .entry-list{
@@ -536,7 +414,6 @@ a.back-link:hover:before{
 .teaser:last-child{
 	border: none;
 }
-
 #teaser_bar{
 	float: left;
 	width: 100%;
