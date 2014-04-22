@@ -35,7 +35,7 @@ class MY_Controller extends CI_Controller {
 				1 => Array
 				(
 					'id' => 1,
-					'abbr' => en,
+					'abbr' => 'en',
 					'status' => 1,
 					'name' => 'english',
 					'label' => 'english'
@@ -69,8 +69,8 @@ class MY_Controller extends CI_Controller {
 		}
 		else
 		{
-			$this->config->set_item('lang_abbr', $default_abbr);
-			$this->config->set_item('lang_id', $default_id);
+			$this->config->set_item('lang_abbr', 'de');
+			$this->config->set_item('lang_id', 2);
 		}
 		$lang_id = $this->config->item('lang_id');
 		
