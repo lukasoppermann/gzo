@@ -261,7 +261,7 @@ function alias_loop(&$array, $keys)
 		$keys[] = $key;
 		if(is_array($value))
 		{
-			alias_loop(&$value, &$keys, &$alias);
+			alias_loop($value, $keys, $alias);
 		}
 		else
 		{
