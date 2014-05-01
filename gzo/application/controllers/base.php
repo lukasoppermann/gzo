@@ -66,7 +66,7 @@ class Base extends MY_Controller {
 			krsort($news[1]);
 			krsort($news[2]);
 			// build news block
-			$data['page'] .= '<div class="column news"><a href="./news"><h2>Neuigkeiten</h2><span class="span-link">Archiv</span></a><div class="items">';
+			$data['page'] .= '<div class="column news"><a href="'.lang_url().'news"><h2>Neuigkeiten</h2><span class="span-link">Archiv</span></a><div class="items">';
 			for($i=0; $i<3; $i++)
 			{
 				if( isset($news[1][$i]) )
@@ -77,7 +77,7 @@ class Base extends MY_Controller {
 			krsort($nws_items);
 			$data['page'] .= implode($nws_items,'').'</div></div>';
 			// build blog block
-			$data['page'] .= '<div class="column blog-previews"><a href="./blog"><h2>Artikel</h2><span class="span-link">Alle Artikel</span></a><div class="items">';
+			$data['page'] .= '<div class="column blog-previews"><a href="'.lang_url().'blog"><h2>Artikel</h2><span class="span-link">Alle Artikel</span></a><div class="items">';
 			for($i=0; $i<2; $i++)
 			{
 				if( isset($news[2][$i]) )
@@ -104,7 +104,7 @@ class Base extends MY_Controller {
 			{
 				if( isset($news[$i]) )
 				{
-					$nws_items[] .=  $this->load->view('custom/entry', $news[$i], TRUE);
+					$nws_items[] .= $this->load->view('custom/entry', $news[$i], TRUE);
 				}
 			}
 			krsort($nws_items);
@@ -113,24 +113,38 @@ class Base extends MY_Controller {
 		// blog archive
 		elseif( $this->navigation->current('path') === '/blog' )
 		{
-			// preapre news
-			$news = get_db_data(config('prefix').'news', array('where' => array('language' => $this->config->item('lang_id'), 'type' => 2), 'select' => '*', 'limit' => 100));
-			// 1 = news, 2 = blog-posts
-			$news = sort_array($news, 'date');
-			krsort($news);
-			// build news block
-			$data['page'] = '<h1>Blogartikel</h1><div class="items">';
-			for($i=0; $i<3; $i++)
+			if( $this->navigation->variables(1) !== null )
 			{
-				if( isset($news[$i]) )
+				$news = get_db_data(config('prefix').'news', array('where' => array('id' => $this->navigation->variables(1)), 'select' => '*'));
+				$news[0]['back_link'] = $this->config->item('lang_id') == 1 ? 'Back to articles' : 'Zur Übersicht der Artikel';
+				$data['page'] = $this->load->view('custom/article', $news[0], TRUE);
+				if( $news[0]['header'] !== null )
 				{
-					$news[$i]['title'] = '<a href="./blog/'.$news[$i][id].'">'.$news[$i]['title'].'</a>';
-					$news[$i]['text'] = '<a class="no-underlined" href="./blog/'.$news[$i][id].'">'.$news[$i]['text'].'</a>';
-					$nws_items[] .=  $this->load->view('custom/entry', $news[$i], TRUE);
+					$data['header'] = $news[0]['header'];
 				}
+				$this->config->set_item('title', $news[0]['title']);
 			}
-			krsort($nws_items);
-			$data['page'] .= implode($nws_items,'').'</div>';
+			else
+			{
+				// preapre news
+				$news = get_db_data(config('prefix').'news', array('where' => array('language' => $this->config->item('lang_id'), 'type' => 2), 'select' => '*', 'limit' => 100));
+				// 1 = news, 2 = blog-posts
+				$news = sort_array($news, 'date');
+				krsort($news);
+				// build news block
+				$data['page'] = '<h1>Blogartikel</h1><div class="items">';
+				for($i=0; $i<3; $i++)
+				{
+					if( isset($news[$i]) )
+					{
+						$news[$i]['title'] = '<a href="'.lang_url().'blog/'.$news[$i][id].'">'.$news[$i]['title'].'</a>';
+						$news[$i]['text'] = '<a class="no-underlined" href="'.lang_url().'blog/'.$news[$i][id].'">'.$news[$i]['text'].'</a>';
+						$nws_items[] .=  $this->load->view('custom/entry', $news[$i], TRUE);
+					}
+				}
+				krsort($nws_items);
+				$data['page'] .= implode($nws_items,'').'</div>';
+			}
 		}
 		// default case
 		if(!isset($data['page']) || $data['page'] == null)
