@@ -95,6 +95,13 @@ a.back-link:hover:before{
 	width: 950px;
 	overflow: visible;
 }
+.no-underlined{
+	text-decoration: none;
+}
+.no-underlined:hover{
+	text-decoration: none;
+	color: inherit;
+}
 /* ------------------------------------------------------------------------ */
 #header{
 	background: rgb(255,255,255);
@@ -373,6 +380,76 @@ a.back-link:hover:before{
 }
 #main_content fieldset div, #main_content fieldset p{
 	padding: 5px;
+}
+/* ------------------------------------------------------------------------ */
+/* homepage news */
+.column{
+	width: 48%;
+	float: left;
+	margin-right: 2%;
+	margin-top: 20px;
+	background-color: rgb(250,250,250);
+	background-image: linear-gradient( top, rgb(250,250,250), rgb(255,255,255));
+	background-image: -webkit-linear-gradient( top, rgb(250,250,250), rgb(255,255,255));
+	border-radius: 5px;
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+	padding: 10px;
+}
+.column:last-child{
+	margin-right: 0;
+	margin-left: 2%;	
+}
+#main_content .column h2{
+	display: inline-block;
+	margin-top: 0;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid rgb(240,240,240);
+}
+#main_content .column .span-link{
+	float: right;
+	text-decoration: underline;
+	font-size: 0.9em;
+	line-height: 2.7em;
+	color: rgb(150,150,150);
+}
+#main_content .column h3{
+	font-size: 1.1em;
+	margin: 0 0 10px 0px;
+	font-weight: 400;
+	color: rgb(255,125,0);
+}
+#main_content .column{
+	font-size: .9em;
+	line-height: 140%;
+}
+#main_content .column .items div{
+	float: left;
+	width: 100%;
+}
+#main_content .column .items a{
+	position: relative;
+	display: block;
+	float: right;
+	text-decoration: none;
+	margin: 5px 0;
+}
+#main_content .column .items a:hover{
+	text-decoration: underline;
+}
+#main_content .column .items a:before{
+	content: "";
+	position: absolute;
+	display: block;
+	left: -7px;
+	top: 50%;
+	margin-top: -4px;
+	width: 0px;
+	height: 0px;
+	border: 4px solid transparent;
+	border-left-color: rgb(255,125,0);
 }
 /* ------------------------------------------------------------------------ */
 /* entry */
