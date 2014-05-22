@@ -57,7 +57,8 @@ class Base extends MY_Controller {
 		elseif( $this->navigation->current('path') === '/home' || $this->navigation->current('path') === '/' || $this->navigation->current('path') === '' )
 		{
 			// add contenmt
-			$data['page'] = '<div class="entry">'.$this->entries->get($this->navigation->current('id'), $this->data, TRUE).'</div>';
+			// $data['page'] = '<div class="entry">'.$this->entries->get($this->navigation->current('id'), $this->data, TRUE).'</div>';
+			$data['body_id'] = ' id="homepage"';
 			// preapre news
 			$news = index_array(get_db_data(config('prefix').'news', array('where' => array('language' => $this->config->item('lang_id')), 'select' => '*')), 'type', TRUE);
 			// 1 = news, 2 = blog-posts
@@ -66,28 +67,35 @@ class Base extends MY_Controller {
 			krsort($news[1]);
 			krsort($news[2]);
 			// build news block
-			$data['page'] .= '<div class="column news"><a href="'.lang_url().'news"><h2>Neuigkeiten</h2><span class="span-link">Archiv</span></a><div class="items">';
-			for($i=0; $i<3; $i++)
+			$data['news'] = '<div class="column news"><a href="'.lang_url().'news"><h4>Neuigkeiten</h4><span class="span-link">Archiv</span></a><div class="items">';
+			for($i=0; $i<2; $i++)
 			{
 				if( isset($news[1][$i]) )
 				{
-					$nws_items[] .=  $this->load->view('custom/entry', $news[1][$i], TRUE);
+					$nws_items[] =  $this->load->view('custom/entry', $news[1][$i], TRUE);
 				}
 			}
 			krsort($nws_items);
-			$data['page'] .= implode($nws_items,'').'</div></div>';
+			$data['news'] .= implode($nws_items,'').'</div></div>';
 			// build blog block
-			$data['page'] .= '<div class="column blog-previews"><a href="'.lang_url().'blog"><h2>Artikel</h2><span class="span-link">Alle Artikel</span></a><div class="items">';
-			for($i=0; $i<2; $i++)
+			$data['blog'] = '<div class="column blog-previews"><a href="'.lang_url().'blog"><h4>Artikel</h4><span class="span-link">Alle Artikel</span></a><div class="items">';
+			for($i=0; $i<3; $i++)
 			{
 				if( isset($news[2][$i]) )
 				{
-					$news[2][$i]['text'] .= '<a href="./blog/'.$news[2][$i][id].'">Artikel öffnen</a>';
-					$blog_items[] .=  $this->load->view('custom/entry', $news[2][$i], TRUE);
+					if( isset($news[2][$i]['long_text']) )
+					{
+						$news[2][$i]['text'] .= '<a href="./blog/'.$news[2][$i]['id'].'">Artikel öffnen</a>';
+					}
+					$blog_items[] =  $this->load->view('custom/entry', $news[2][$i], TRUE);
 				}
 			}
 			krsort($blog_items);
-			$data['page'] .= implode($blog_items,'').'</div></div>';
+			$data['blog'].= implode($blog_items,'').'</div></div>';
+			
+			$data['main_content'] = $this->entries->get($this->navigation->current('id'), $this->data, TRUE);
+			// load view
+			$data['page'] = $this->load->view('homepage_'.$this->config->item('lang_abbr'), $data, TRUE);
 			
 		}
 		// news archive
@@ -137,9 +145,17 @@ class Base extends MY_Controller {
 				{
 					if( isset($news[$i]) )
 					{
-						$news[$i]['title'] = '<a href="'.lang_url().'blog/'.$news[$i][id].'">'.$news[$i]['title'].'</a>';
-						$news[$i]['text'] = '<a class="no-underlined" href="'.lang_url().'blog/'.$news[$i][id].'">'.$news[$i]['text'].'</a>';
-						$nws_items[] .=  $this->load->view('custom/entry', $news[$i], TRUE);
+						if( isset($news[2][$i]['long_text']) )
+						{
+							$news[$i]['title'] = '<a href="'.lang_url().'blog/'.$news[$i][id].'">'.$news[$i]['title'].'</a>';
+							$news[$i]['text'] = '<a class="no-underlined" href="'.lang_url().'blog/'.$news[$i]['id'].'">'.$news[$i]['text'].'</a>';
+						}
+						else
+						{
+							$news[$i]['title'] = $news[$i]['title'];
+						}
+						$news[$i]['text'] = $news[$i]['text'];
+						$nws_items[] =  $this->load->view('custom/entry', $news[$i], TRUE);
 					}
 				}
 				krsort($nws_items);

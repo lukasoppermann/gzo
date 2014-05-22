@@ -31,7 +31,7 @@ function navigation_item(&$item, $opt = array(NULL))
 		$languages = $CI->config->item('languages');
 		$tmp_lang = explode('/',$item['path']);
 		// check for language in url
-		if(!in_array($tmp_lang[1], $languages['abbr']))
+		if(!isset($tmp_lang[1]) || !in_array($tmp_lang[1], $languages['abbr']))
 		{		
 			// no language -> add it
 			$path = active_url().trim($item['path'],'/');
