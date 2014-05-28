@@ -7,31 +7,31 @@
 </div>
 
 <div class="technologies">
-	<h3>Unsere Technologien</h3>
+	<h2><a name="technologien" id="technologien" class="anchor">Unsere Technologien</a></h2>
 	<a class="technology" href="<?=lang_url().'gleitschleiftechnik'?>">
 		<img src="<?=base_url().'media/images/technologien/gleitschleiftechnik.jpg'?>" alt="Gleitschleiftechnik" />
-		<span>Gleitschleiftechnik</span>
+		<h3>Gleitschleiftechnik</h3>
 	</a>
 	<a class="technology" href="<?=lang_url().'felgenveredelung'?>">
 		<img src="<?=base_url().'media/images/technologien/felgenveredelung.jpg'?>" alt="Felgenveredelung" />
-		<span>Felgenveredelung</span>	
+		<h3>Felgenveredelung</h3>	
 	</a>
 	<a class="technology" href="<?=lang_url().'kunststoffveredelung'?>">
 		<img src="<?=base_url().'media/images/technologien/kunststoffveredelung.jpg'?>" alt="Kunststoffveredelung" />
-		<span>Kunststoffveredelung</span>
+		<h3>Kunststoffveredelung</h3>
 	</a>
 	<a class="technology" href="<?=lang_url().'strahltechnik'?>">
 		<img src="<?=base_url().'media/images/technologien/strahltechnik.jpg'?>" alt="Strahltechnik" />
-		<span>Strahltechnik</span>
+		<h3>Strahltechnik</h3>
 	</a>
 </div>
 
 <div class="column">
 	<h2>Qualität & Umwelt</h2>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+	<p>Eine zertifizierte Organisation, transparente Abläufe, qualifizierte Mitarbeiter und über 20 Jahre Erfahrung in der industriellen Serienfertigung bieten unseren Kunden ein hohes Maß an Sicherheit in allen Belangen. </p>
 	<a class="link" href="<?=lang_url().'qualitaet'?>">Qualitätsleitlinien</a>
 	<br />
-	<p>Lorem ipsum dolor sit amet, adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+	<p>Der Einsatz umweltschonender Technologien und Produkte sowie ein hohes Maß an Bewusstsein bei jedem unserer Mitarbeiter hat für uns einen besonderen Stellenwert</p>
 	<a class="link" href="<?=lang_url().'qualitaet/umweltmanagement'?>">Umweltmanagement</a>
 </div>
 <div class="column">

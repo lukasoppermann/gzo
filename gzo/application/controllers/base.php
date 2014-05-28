@@ -62,28 +62,33 @@ class Base extends MY_Controller {
 			// preapre news
 			$news = index_array(get_db_data(config('prefix').'news', array('where' => array('language' => $this->config->item('lang_id')), 'select' => '*')), 'type', TRUE);
 			// 1 = news, 2 = blog-posts
-			$news[1] = sort_array($news[1], 'date');
 			$news[2] = sort_array($news[2], 'date');
-			krsort($news[1]);
 			krsort($news[2]);
 			// build news block
 			$data['news'] = '<div class="column news"><a href="'.lang_url().'news"><h4>Neuigkeiten</h4><span class="span-link">Archiv</span></a><div class="items">';
-			for($i=0; $i<2; $i++)
+			if( isset($news[1]) && count($news[1]) > 0 )
 			{
-				if( isset($news[1][$i]) )
+				// 1 = news, 2 = blog-posts
+				$news[1] = sort_array($news[1], 'date');
+				krsort($news[1]);
+				for($i=0; $i<2; $i++)
 				{
-					$nws_items[] =  $this->load->view('custom/entry', $news[1][$i], TRUE);
+					if( isset($news[1][$i]) )
+					{
+						$nws_items[] =  $this->load->view('custom/entry', $news[1][$i], TRUE);
+					}
 				}
+				krsort($nws_items);
+				$data['news'] .= implode($nws_items,'');
 			}
-			krsort($nws_items);
-			$data['news'] .= implode($nws_items,'').'</div></div>';
+			$data['news'] .= '</div></div>';
 			// build blog block
 			$data['blog'] = '<div class="column blog-previews"><a href="'.lang_url().'blog"><h4>Artikel</h4><span class="span-link">Alle Artikel</span></a><div class="items">';
 			for($i=0; $i<3; $i++)
 			{
 				if( isset($news[2][$i]) )
 				{
-					if( isset($news[2][$i]['long_text']) )
+					if( isset($news[2][$i]['long_text']) && $news[2][$i]['long_text'] != "" )
 					{
 						$news[2][$i]['text'] .= '<a href="./blog/'.$news[2][$i]['id'].'">Artikel öffnen</a>';
 					}
@@ -145,7 +150,7 @@ class Base extends MY_Controller {
 				{
 					if( isset($news[$i]) )
 					{
-						if( isset($news[2][$i]['long_text']) )
+						if( isset($news[2][$i]['long_text']) && $news[2][$i]['long_text'] != "" )
 						{
 							$news[$i]['title'] = '<a href="'.lang_url().'blog/'.$news[$i][id].'">'.$news[$i]['title'].'</a>';
 							$news[$i]['text'] = '<a class="no-underlined" href="'.lang_url().'blog/'.$news[$i]['id'].'">'.$news[$i]['text'].'</a>';
