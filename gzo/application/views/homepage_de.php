@@ -26,6 +26,66 @@
 	</a>
 </div>
 
+<div class="branchen">
+	<h2><a name="branchen" id="branchen" class="anchor">Branchen</a></h2>
+  <p class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p class="intro last">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<div class="branche">
+    <div class="img">
+		  <img src="<?=base_url().'media/images/branchen/antriebstechnik.png'?>" alt="Antriebstechnik" />
+    </div>
+		<div class="copy">
+      <h3>Antriebstechnik</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+	</div>
+	<div class="branche">
+    <div class="img">
+      <img src="<?=base_url().'media/images/branchen/automobile.png'?>" alt="Automobile" />
+    </div>
+    <div class="copy">
+      <h3>Automobil</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+	</div>
+	<div class="branche last">
+    <div class="img">
+		  <img src="<?=base_url().'media/images/branchen/deko.png'?>" alt="Dekorative Oberflächen" />
+    </div>
+    <div class="copy">
+		  <h3>Dekorative Oberflächen</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+	</div>
+	<div class="branche last-row">
+    <div class="img">
+		  <img src="<?=base_url().'media/images/branchen/lebensmitteltechnik.png'?>" alt="Lebensmitteltechnik" />
+    </div>
+    <div class="copy">
+      <h3>Lebensmitteltechnik</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+	</div>
+	<div class="branche last-row">
+    <div class="img">
+      <img src="<?=base_url().'media/images/branchen/medizintechnik.png'?>" alt="Medizintechnik" />
+    </div>
+    <div class="copy">
+      <h3>Medizintechnik</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+	</div>
+	<div class="branche last last-row">
+    <div class="img">
+      <img src="<?=base_url().'media/images/branchen/teilefertigung.png'?>" alt="Teilefertigung" />
+    </div>
+    <div class="copy">
+      <h3>Teilefertigung</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+	</div>
+</div>
+
 <div class="column">
 	<h2>Qualität & Umwelt</h2>
 	<p>Eine zertifizierte Organisation, transparente Abläufe, qualifizierte Mitarbeiter und über 20 Jahre Erfahrung in der industriellen Serienfertigung bieten unseren Kunden ein hohes Maß an Sicherheit in allen Belangen. </p>

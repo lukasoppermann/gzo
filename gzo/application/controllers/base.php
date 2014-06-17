@@ -63,14 +63,14 @@ class Base extends MY_Controller {
 			$news = index_array(get_db_data(config('prefix').'news', array('where' => array('language' => $this->config->item('lang_id')), 'select' => '*')), 'type', TRUE);
 			// 1 = news, 2 = blog-posts
 			$news[2] = sort_array($news[2], 'date');
-			krsort($news[2]);
+			ksort($news[2]);
 			// build news block
 			$data['news'] = '<div class="column news"><a href="'.lang_url().'news"><h4>Neuigkeiten</h4><span class="span-link">Archiv</span></a><div class="items">';
 			if( isset($news[1]) && count($news[1]) > 0 )
 			{
 				// 1 = news, 2 = blog-posts
 				$news[1] = sort_array($news[1], 'date');
-				krsort($news[1]);
+				ksort($news[1]);
 				for($i=0; $i<2; $i++)
 				{
 					if( isset($news[1][$i]) )
@@ -78,7 +78,7 @@ class Base extends MY_Controller {
 						$nws_items[] =  $this->load->view('custom/entry', $news[1][$i], TRUE);
 					}
 				}
-				krsort($nws_items);
+				ksort($nws_items);
 				$data['news'] .= implode($nws_items,'');
 			}
 			$data['news'] .= '</div></div>';
@@ -95,7 +95,7 @@ class Base extends MY_Controller {
 					$blog_items[] =  $this->load->view('custom/entry', $news[2][$i], TRUE);
 				}
 			}
-			krsort($blog_items);
+			ksort($blog_items);
 			$data['blog'].= implode($blog_items,'').'</div></div>';
 			
 			$data['main_content'] = $this->entries->get($this->navigation->current('id'), $this->data, TRUE);
@@ -140,13 +140,13 @@ class Base extends MY_Controller {
 			else
 			{
 				// preapre news
-				$news = get_db_data(config('prefix').'news', array('where' => array('language' => $this->config->item('lang_id'), 'type' => 2), 'select' => '*', 'limit' => 100));
+				$news = get_db_data(config('prefix').'news', array('where' => array('language' => $this->config->item('lang_id'), 'type' => 2), 'select' => '*'));
 				// 1 = news, 2 = blog-posts
 				$news = sort_array($news, 'date');
 				krsort($news);
 				// build news block
-				$data['page'] = '<h1>Blogartikel</h1><div class="items">';
-				for($i=0; $i<3; $i++)
+				$data['page'] = '<h1>Blogartikel</h1><div class="blog-items items">';
+				for($i=0; $i<count($news); $i++)
 				{
 					if( isset($news[$i]) )
 					{

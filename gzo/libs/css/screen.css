@@ -305,14 +305,14 @@ a.back-link:hover:before{
 	padding-right: 25px;
 	margin-top: 0 !important;
 }
-.technologies{
+.technologies, .branchen{
 	width: 100%;
 	float: left;
 	padding-bottom: 50px;
 	margin-bottom: 30px;
 	border-bottom: 1px solid rgb(235,235,235);
 }
-.technologies .technology{
+.technologies .technology, .branchen .branche{
 	position: relative;
 	width: 23.5%;
 	margin-right: 2%;
@@ -325,20 +325,41 @@ a.back-link:hover:before{
 	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	transition: box-shadow .5s ease .0s;
 }
+.branchen .branche{
+	height: auto;
+	width: 32%;
+	margin-bottom: 20px;
+}
+.branchen .branche.last-row{
+	margin-bottom: 0;	
+}
+.branchen .branche.last{
+	margin-right: 0;	
+}
 .technologies .technology:hover{
 	box-shadow: 0 1px 2px rgba(0,0,0,0.25);
 }
-.technologies .technology h3{
+.technologies .technology h3, .branchen .branche h3{
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	-moz-box-sizing: border-box; 
 	-webkit-box-sizing: border-box; 
 	box-sizing: border-box;
-	padding: 0 10px 10px 20px;
+	padding: 7px 10px 7px 20px;
 	margin: 0 !important;
 	z-index: 2;
 	font-size: 1.2em !important;
+	background-color: rgb(255,255,255);
+}
+.branchen .branche h3{
+	background-color:transparent;
+	position: relative;
+}
+.branchen .branche .copy p{
+	margin-top: 0;
+	padding: 0 20px;
+	font-size: 15px;
 }
 .technologies .technology h3:before{
 	content: "";
@@ -346,14 +367,36 @@ a.back-link:hover:before{
 	display: block;
 	left: 8px;
 	top: 50%;
-	margin-top: -8px;
+	margin-top: -4px;
 	width: 0px;
 	height: 0px;
 	border-style: solid;
 	border-color: transparent transparent transparent rgb(255,125,0);
 	border-width: 4px;
 }
-.technologies .technology:before{
+.branchen .branche .copy{
+	position: relative;
+	background-color:rgb(255,255,255);
+}
+.branchen .branche .img{
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+.branchen .branche img{
+	width: auto;
+	height: 100%;
+}
+.branchen .intro{
+	float: left;
+	width: 48%;
+	margin-right: 4%;
+	padding-bottom: 20px;
+}
+.branchen .intro.last{
+	margin-right: 0;
+}
+.technologies .technology:before, .branchen .branche .copy:before{
 	content: "";
 	position: absolute;
 	bottom: 0;
@@ -361,12 +404,16 @@ a.back-link:hover:before{
 	height: 120px;
 	width: 100%;
 	z-index: 0;
-	background-image: linear-gradient( bottom, rgba(255,255,255,1), rgba(255,255,255,1) 40px, rgba(255,255,255,0));
+	background-image: linear-gradient( to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 40px, rgba(255,255,255,0) 100%);
 	background-image: -webkit-linear-gradient( bottom, rgba(255,255,255,1), rgba(255,255,255,1) 40px, rgba(255,255,255,0));
+}
+.branchen .branche .copy:before{
+	top: -90px;
 }
 .technologies .technology:last-child{
 	margin-right: 0%;
 }
+
 #main_content .column.news{
 	width: 32%;
 	margin: 0;
@@ -602,10 +649,10 @@ a.back-link:hover:before{
 }
 /* ------------------------------------------------------------------------ */
 /* entry */
-.entry-list{
-/*	padding-bottom: 20px;
+.blog-items .entry-list{
+	padding-bottom: 20px;
 	margin-bottom: 30px;
-	border-bottom: 1px solid rgb(235,235,235);*/
+	border-bottom: 1px solid rgb(235,235,235);
 }
 .entry-list:last-child{
 	border-bottom: none;
