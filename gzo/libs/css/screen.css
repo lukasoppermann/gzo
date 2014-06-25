@@ -326,7 +326,7 @@ a.back-link:hover:before{
 	transition: box-shadow .5s ease .0s;
 }
 .branchen .branche{
-	height: auto;
+	height: 420px;
 	width: 32%;
 	margin-bottom: 20px;
 }
@@ -355,6 +355,7 @@ a.back-link:hover:before{
 .branchen .branche h3{
 	background-color:transparent;
 	position: relative;
+	padding-top: 15px;
 }
 .branchen .branche .copy p{
 	margin-top: 0;
@@ -389,14 +390,14 @@ a.back-link:hover:before{
 }
 .branchen .intro{
 	float: left;
-	width: 48%;
-	margin-right: 4%;
+	width: 68%;
+	margin-right: 32%;
 	padding-bottom: 20px;
 }
 .branchen .intro.last{
 	margin-right: 0;
 }
-.technologies .technology:before, .branchen .branche .copy:before{
+/*.technologies .technology:before, .branchen .branche .copy:before{
 	content: "";
 	position: absolute;
 	bottom: 0;
@@ -406,7 +407,7 @@ a.back-link:hover:before{
 	z-index: 0;
 	background-image: linear-gradient( to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 40px, rgba(255,255,255,0) 100%);
 	background-image: -webkit-linear-gradient( bottom, rgba(255,255,255,1), rgba(255,255,255,1) 40px, rgba(255,255,255,0));
-}
+}*/
 .branchen .branche .copy:before{
 	top: -90px;
 }
